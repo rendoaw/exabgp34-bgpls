@@ -1,0 +1,11 @@
+*.pyc
+*.pyo
+/build/
+/dist/
+/sdist/
+/cover/
+
+.DS_Store
+.coveralls.yml*
+.coverage
+.idea
