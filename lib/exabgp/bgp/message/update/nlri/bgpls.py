@@ -141,7 +141,7 @@ class BGPLS(NLRI):
                                 while node_cur_pos < node_length:
                                         node_tlv_type, node_tlv_length, node_tlv_value = decode_tlv(data, node_offset, 2, 2)
                                         if node_tlv_type == LSTLV.IGP_ROUTER_ID:
-                                                local_node_id = str(binascii.hexlify(node_tlv_value))
+                                                local_node_id = str(IP.unpack(node_tlv_value))
                                         if node_tlv_type == LSTLV.ASN:
                                                 local_asn = str(int(binascii.hexlify(node_tlv_value), 16))
                                         node_offset = node_offset+2+2+node_tlv_length
@@ -154,7 +154,8 @@ class BGPLS(NLRI):
                                 while node_cur_pos < node_length:
                                         node_tlv_type, node_tlv_length, node_tlv_value = decode_tlv(data, node_offset, 2, 2)
                                         if node_tlv_type == LSTLV.IGP_ROUTER_ID:
-                                                remote_node_id = str(binascii.hexlify(node_tlv_value))
+                                                print str(int(binascii.hexlify(node_tlv_value), 16))
+                                                remote_node_id = str(IP.unpack(node_tlv_value))
                                         if node_tlv_type == LSTLV.ASN:
                                                 remote_asn = str(int(binascii.hexlify(node_tlv_value), 16))
                                         node_offset = node_offset+2+2+node_tlv_length

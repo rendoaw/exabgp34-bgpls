@@ -92,18 +92,18 @@ class LinkState(Attribute):
 			if t == 1088:
 				ls_attributes['admin_group'] = str(binascii.hexlify(v))
 			if t == 1089:
-				ls_attributes['max_link_bw'] = str(int(binascii.hexlify(v), 16))
+				ls_attributes['max_link_bw'] = str(int(unpack('>f', v)[0]) * 8 )
 			if t == 1090:
-				ls_attributes['max_resv_bw'] = str(int(binascii.hexlify(v), 16))
+				ls_attributes['max_resv_bw'] = str(int(unpack('>f', v)[0]) * 8 )
 			if t == 1091:
-				ls_attributes['available_bw'][0] = str(int(binascii.hexlify(v)[0:4], 16))
-				ls_attributes['available_bw'][1] = str(int(binascii.hexlify(v)[4:8], 16))
-				ls_attributes['available_bw'][2] = str(int(binascii.hexlify(v)[8:12], 16))
-				ls_attributes['available_bw'][3] = str(int(binascii.hexlify(v)[12:16], 16))
-				ls_attributes['available_bw'][4] = str(int(binascii.hexlify(v)[16:20], 16))
-				ls_attributes['available_bw'][5] = str(int(binascii.hexlify(v)[20:24], 16))
-				ls_attributes['available_bw'][6] = str(int(binascii.hexlify(v)[24:28], 16))
-				ls_attributes['available_bw'][7] = str(int(binascii.hexlify(v)[28:32], 16))
+				ls_attributes['available_bw'][0] = str(int(unpack('>f', v[0:4])[0]) * 8 )
+				ls_attributes['available_bw'][1] = str(int(unpack('>f', v[4:8])[0]) * 8 )
+				ls_attributes['available_bw'][2] = str(int(unpack('>f', v[8:12])[0]) * 8 )
+				ls_attributes['available_bw'][3] = str(int(unpack('>f', v[12:16])[0]) * 8 )
+				ls_attributes['available_bw'][4] = str(int(unpack('>f', v[16:20])[0]) * 8 )
+				ls_attributes['available_bw'][5] = str(int(unpack('>f', v[20:24])[0]) * 8 )
+				ls_attributes['available_bw'][6] = str(int(unpack('>f', v[24:28])[0]) * 8 )
+				ls_attributes['available_bw'][7] = str(int(unpack('>f', v[28:32])[0]) * 8 )
 			if t == 1092:
 				ls_attributes['te_metric'] = str(int(binascii.hexlify(v), 16))
 			if t == 1095:
